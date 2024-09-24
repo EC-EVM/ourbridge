@@ -1,5 +1,6 @@
 # OurBridge
 
+```
 # Deploy token to Sepolia
 npx ts-node --files ./scripts/DeployBridgeableToken.ts TestToken TT eth
 # BridgeableToken contract deployed to: 0xd19e8d3a9720df22f6689eb9b54c691414efe8c
@@ -33,3 +34,4 @@ npx ts-node --files ./scripts/BridgeTokens.ts 0xD19e8d3a9720df22F6689EB9B54C6914
 npx ts-node --files ./scripts/BridgeTokens.ts 0xD19e8d3a9720df22F6689EB9B54C691414efE8C2 1 base
 https://sepolia.etherscan.io/address/0xd19e8d3a9720df22f6689eb9b54c691414efe8c2
 https://base-sepolia.blockscout.com/address/0xD19e8d3a9720df22F6689EB9B54C691414efE8C2
+```
