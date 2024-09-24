@@ -6,6 +6,7 @@ import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 import { TokenBalances } from "~~/components/TokenBalances";
+import { BridgeTokens } from "~~/components/BridgeTokens";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -22,7 +23,8 @@ const Home: NextPage = () => {
             <p className="my-2 font-medium">Connected Address:</p>
             <Address address={connectedAddress} />
           </div>
-          <TokenBalances></TokenBalances>
+          <TokenBalances />
+          <BridgeTokens />
         </div>
       </div>
     </>
