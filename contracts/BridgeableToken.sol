@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
 contract BridgeableToken is ERC20, ERC20Burnable, AccessControl {
+    event Bridge(address indexed owner, uint256 indexed amount);
+
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     constructor(string memory name, string memory symbol) ERC20(name, symbol) {
@@ -15,5 +17,10 @@ contract BridgeableToken is ERC20, ERC20Burnable, AccessControl {
 
     function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
         _mint(to, amount);
+    }
+
+    function bridge(uint256 value) public virtual {
+        _burn(_msgSender(), value);
+        emit Bridge(msg.sender, value);
     }
 }
