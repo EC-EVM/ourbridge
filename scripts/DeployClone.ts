@@ -104,8 +104,9 @@ async function baseSepoliaDeploy() {
 }
 
 async function main() {
-  sepoliaDeploy();
-  baseSepoliaDeploy();
+  await sepoliaDeploy();
+
+  await baseSepoliaDeploy();
 }
 
 main().catch((error) => {
