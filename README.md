@@ -3,7 +3,7 @@
 ```
 # Deploy token to Sepolia
 npx ts-node --files ./scripts/DeployBridgeableToken.ts TestToken TT eth
-# BridgeableToken contract deployed to: 0xd19e8d3a9720df22f6689eb9b54c691414efe8c
+# BridgeableToken contract deployed to: 0xd19e8d3a9720df22f6689eb9b54c691414efe8c2
 
 # Deploy token to Base Sepolia
 npx ts-node --files ./scripts/DeployBridgeableToken.ts TestToken TT base
