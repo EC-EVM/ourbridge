@@ -1,9 +1,12 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { abi } from "../../../../artifacts/contracts/BridgeableToken.sol/BridgeableToken.json";
-import { useAccount, useReadContracts } from "wagmi";
+import { useAccount, useReadContracts, useWatchContractEvent } from "wagmi";
 
 export const TokenBalances = () => {
   const { address: connectedAddress } = useAccount();
   const tokenAddress = "0xD19e8d3a9720df22F6689EB9B54C691414efE8C2"
+  const queryClient = useQueryClient();
+
   const result = useReadContracts({
     contracts: [
       {
@@ -24,8 +27,27 @@ export const TokenBalances = () => {
   });
   const balanceSepolia = result.data?.[0].result;
   const balanceBase = result.data?.[1].result;
-  console.log(balanceSepolia);
-  console.log(balanceBase);
+  const queryKey = result.queryKey;
+
+  const watchContractEvents = (chainId: number) => {
+    useWatchContractEvent({
+      address: tokenAddress,
+      abi,
+      chainId,
+      onLogs(logs) {
+        try {
+          console.log('New logs!', logs)
+          queryClient.invalidateQueries({queryKey});
+          console.log('Queries invalidated');
+        } catch (error) {
+          console.error('Error in onLogs function:', error);
+        }
+      },
+    })
+  }
+
+  watchContractEvents(84532);
+  watchContractEvents(11155111);
 
   return (
     <div className="card w-96 bg-primary text-primary-content mt-4">
