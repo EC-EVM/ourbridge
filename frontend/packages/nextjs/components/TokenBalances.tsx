@@ -4,20 +4,19 @@ import { useAccount, useReadContracts, useWatchContractEvent } from "wagmi";
 
 export const TokenBalances = () => {
   const { address: connectedAddress } = useAccount();
-  const tokenAddress = "0xD19e8d3a9720df22F6689EB9B54C691414efE8C2"
-  const queryClient = useQueryClient();
-
+  const tokenAddress1 = "0xd19e8d3a9720df22f6689eb9b54c691414efe8c2"
+  const tokenAddress2 = "0xd19e8d3a9720df22f6689eb9b54c691414efe8c2"
   const result = useReadContracts({
     contracts: [
       {
-        address: tokenAddress,
+        address: tokenAddress1,
         abi: abi,
         functionName: "balanceOf",
         args: [connectedAddress],
         chainId: 11155111
       },
       {
-        address: tokenAddress,
+        address: tokenAddress2,
         abi: abi,
         functionName: "balanceOf",
         args: [connectedAddress],
