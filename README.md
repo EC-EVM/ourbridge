@@ -61,3 +61,5 @@ cd frontend
 yarn install
 yarn start
 ```
+## Bridge Diagram
+<img width="715" alt="Screenshot 2024-09-25 at 5 36 26 PM" src="https://github.com/user-attachments/assets/688283fc-356f-40ed-b019-2901be061740">
